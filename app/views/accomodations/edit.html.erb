@@ -1,2 +1,14 @@
-<h1>Accomodations#edit</h1>
-<p>Find me in app/views/accomodations/edit.html.erb</p>
+<% icon = @accomodation.accomodation_picto(@accomodation.id) %>
+<div class="small-banner", style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= asset_path("bed.jpg")%>');">
+
+<div><h2> <%= @accomodation.name %></h2></div>
+</div>
+  <div class="container">
+    <div style="margin-top:30px">
+      <div style="margin-bottom: 20px"><%= @accomodation.comment %></div>
+      <%= simple_form_for(@accomodation) do |f| %>
+        <%= f.association :participant, label: "Pour qui ?", label_method: :name, value_method: :id, as: :check_boxes %>
+        <%= f.submit "Go !", class:'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>

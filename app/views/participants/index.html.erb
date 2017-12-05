@@ -1,6 +1,114 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= asset_path("old_reveillon.jpg")%>');">
   <div class="banner-content">
-    <h1>Save the date : 31 décembre</h1>
-    <p>A Tassin la Demi Lune, on n'y va pas à moitié.</p>
+    <h1>Save the date!</h1>
+    <p>Soyez prêts pour le 31 décembre.</p>
+    <p>A Tassin la Demi Lune, on y va pas à moitié.</p>
+    <a href="#participants" class="btn btn-primary btn-lg">Voir les participants</a>
+  </div>
+</div>
+<div class="container" id="participants">
+    <h2 class="present">Ils ont confirmé leur présence :</h2>
+  <div class="row">
+    <% @presents.each do |participant| %>
+    <div class="col-xs-12 col-sm-6">
+      <div class="participants-oui">
+          <div class="card-participant" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('<%= asset_path(participant.pic(participant.id))%>');">
+          <div class="card-participant-category">
+          </div>
+          <div class="card-participant-description">
+            <h2><%= participant.name %></h2>
+            <p><%= participant.number%> personnes</p>
+          </div>
+          <%= link_to "", edit_participant_path(participant), class: 'card-participant-link' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <h2 class="missing">Ils ne viendront malheureusement pas :-(</h2>
+  <div class="row">
+    <% @missing.each do |participant| %>
+    <div class="col-xs-12 col-sm-6">
+      <div class="participants-non">
+          <div class="card-participant" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('<%= asset_path(participant.pic(participant.id))%>');">
+          <div class="card-participant-category">
+          </div>
+          <div class="card-participant-description">
+            <h2><%= participant.name %></h2>
+            <p><%= participant.number%> personnes</p>
+          </div>
+          <%= link_to "", edit_participant_path(participant), class: 'card-participant-link' %>
+          <div class="card-participant-confirmation">
+            <%= link_to "Des regrets ?", participant_path(participant), class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
+
+
+<div class="container">
+    <h2 class="dnk">On ne sait pas encore :</h2>
+  <div class="row">
+    <% @tbc.each do |participant| %>
+    <div class="col-xs-12 col-sm-6">
+      <div class="participants-jsp">
+        <div class="card-participant" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('<%= asset_path(participant.pic(participant.id))%>');">
+          <div class="card-participant-category">
+          </div>
+          <div class="card-participant-description">
+            <h2><%= participant.name %></h2>
+            <p><%= participant.number%> personnes</p>
+          </div>
+          <%= link_to "", edit_participant_path(participant), class: 'card-participant-link' %>
+          <div class="card-participant-confirmation">
+            <%= link_to "Confirmez !", participant_path(participant), class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+  </div>
+</div>
+
+<div class="small-banner", style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= asset_path("bed.jpg")%>');">
+  <div class="banner-content">
+    <h1>Réservez votre lit !</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% Accomodation.all.each do |accomodation| %>
+    <% icon = accomodation.accomodation_picto(accomodation.id) %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="accomodation">
+          <div class="card-accomodation">
+            <div class="card-accomodation-book">
+              <% if accomodation.book %>
+                <div>Booké par les <%= accomodation.participant.name %></div>
+                <% else %>
+                <%= link_to "Réserver", edit_accomodation_path(accomodation), class: 'btn btn-primary' %>
+              <% end %>
+            </div>
+            <div class="card-accomodation-icon">
+              <i class='fa fa-<%= icon %>' aria-hidden="true"></i>
+            </div>
+            <div class="card-accomodation-description">
+              <h2><%= accomodation.name %></h2>
+              <p><%= accomodation.nb_persons%> <%= accomodation.person(accomodation.nb_persons) %></p>
+            </div>
+            <%= link_to "", edit_accomodation_path(accomodation), class: 'card-link' %>
+            <div class='<%= accomodation.taint %>'></div>
+        </div>
+      </div>
+    </div>
+  <% end %>
   </div>
 </div>

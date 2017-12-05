@@ -1,1 +1,19 @@
 // Specific CSS for your home-page
+
+.present {
+  border-left: 7px solid green;
+  padding-left: 10px;
+  margin-bottom: 0;
+}
+
+.missing {
+  border-left: 7px solid red;
+  padding-left: 10px;
+  margin-bottom: 0;
+}
+
+.dnk {
+  border-left: 7px solid gray;
+  padding-left: 10px;
+  margin-bottom: 0;
+}

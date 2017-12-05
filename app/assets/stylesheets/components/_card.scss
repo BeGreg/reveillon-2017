@@ -5,13 +5,13 @@
   background-position: center;
   color: white;
   position: relative;
-  margin: 15px 2px;
+  margin: 10px;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.6);
-  transition: all 0.2s;
+  transition: all 0.3s ease;
 }
 
 .card-participant:hover{
-  margin: 12px 2px 18px 2px;
+  background-size: 200%;
 }
 
 .card-participant-user {
@@ -51,13 +51,30 @@
 }
 
 .card-participant-description h2 {
-  font-size: 24px;
+  font-size: 30px;
 }
+.card-participant-description h2:after {
+    content:'';
+    width:40px;
+    height:1px;
+    background:white;
+    position: absolute;
+    bottom: 35px;
+    left: 0;
+}
+
 
 .card-participant-description p {
   font-size: 14px;
   font-weight: lighter;
   margin-bottom: 5px;
+}
+
+
+.card-participant-confirmation {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }
 
 .card-participant-link {
@@ -75,10 +92,10 @@
   opacity: 0.1;
 }
 
-// accomodation
+// accomodation ///////////////////////////////////////
 
 .card-accomodation {
-  height: 175px;
+  height: 170px;
   text-shadow: 0 1px 1px rgba(0,0,0,0.6);
   background-color: #DDDDDD;
   color: $black;
@@ -87,31 +104,33 @@
   box-shadow: 1px 1px 2px rgba(0,0,0,0.6);
   transition: all 0.2s;
   padding: 20px;
-  text-align: center;
-
 }
 
 .card-accomodation:hover{
-  margin: 12px 2px 18px 2px;
+  .fa {
+    color: #448FE2;
+  }
 }
 
 .card-accomodation-book {
   position: absolute;
   bottom: 10px;
   right: 10px;
-  font-size: 12px;
-  font-weight: 800;
   z-index: 2;
+  margin-bottom: 5px;
+  font-size: 14px;
   .btn {
-   color: white;
-   margin: 5px, 0, 0, 0;
-   padding: 5px;
+    font-size: 20px !important;
+    color: white;
+    margin: 5px, 0, 0, 0;
+    padding: 5px;
   }
 }
 
 .card-accomodation-icon {
   font-size: 45px;
   margin-bottom: 25px;
+  text-align: center;
 }
 
 .card-accomodation-description {
@@ -120,7 +139,7 @@
   left: 10px;
   h2 {
   font-size: 30px;
-  margin: 5px auto;
+  margin: 8px auto;
   }
   p {
   font-size: 14px;
@@ -141,6 +160,17 @@
 
 .card-accomodation-link:hover {
   opacity: 0.1;
+}
+
+.card-accomodation-booked {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index: 2;
+  background: white;
+  opacity: 0.3;
 }
 
 // .card-accomodation-delete {

@@ -1,0 +1,15 @@
+
+<div class="small-banner", style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= asset_path(@participant.pic(@participant.id))%>');">
+    <h2><%= @participant.name %></h2>
+</div>
+  <div class="container">
+    <div style="margin-top:30px">
+      <%= simple_form_for(@participant) do |f| %>
+        <%= f.input :number, collection: 1..4, label: "Nombre de personnes" %>
+        <%= f.input :participate, label: 'On vient !', collection: [["Oui", true],["Non",false]], as: :radio_buttons %>
+        <%= f.input :sleepover, label: 'On dort chez vous', collection: [["Oui", true],["Non",false]], as: :radio_buttons %>
+        <%= f.input :accomodations, label: 'Choix des lits', collection: @accomodations, label_method: :name, value_method: :id, as: :check_boxes %>
+        <%= f.submit "Go !", class:'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
